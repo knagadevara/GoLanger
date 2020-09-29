@@ -1,4 +1,4 @@
-package main
+package helloWorldGo
 
 import (
 	"fmt"
@@ -32,6 +32,5 @@ func main() {
 	// Converting an integer to string
 	var kc = strconv.Itoa(ia)
 	fmt.Printf("kc: %v , Type of kc: %T \n", kc, kc)
-
 	fmt.Printf("IamCorrect is fo type %T and contains %v\n", IamCorrect, IamCorrect)
 }
