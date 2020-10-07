@@ -20,4 +20,13 @@ func main() {
 	fmt.Printf("The average value of the directly passed arguments MyAverage(32, 141, 154, 11, 54, 111, 1788) is %v\n", avg)
 	fmt.Printf("The average value of the slice which is used by un-packing the slice while passing MyAverage(numList...) is %v\n", avg2)
 
+	WhatsMyName := SayMyName()
+	fmt.Printf("%T \n", WhatsMyName())
+	fmt.Printf("%v \n", WhatsMyName())
+
+	WhatsYourAge := WhatsYourAge()
+	fmt.Printf("%T \n", WhatsYourAge)
+	fmt.Printf("%v \n", WhatsYourAge)
+	fmt.Printf("%p \n", &WhatsYourAge)
+	fmt.Printf("%v \n", WhatsYourAge())
 }
