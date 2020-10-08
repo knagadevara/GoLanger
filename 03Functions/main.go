@@ -26,7 +26,14 @@ func main() {
 
 	WhatsYourAge := WhatsYourAge()
 	fmt.Printf("%T \n", WhatsYourAge)
-	fmt.Printf("%v \n", WhatsYourAge)
+	// fmt.Printf("%v \n", WhatsYourAge)
 	fmt.Printf("%p \n", &WhatsYourAge)
 	fmt.Printf("%v \n", WhatsYourAge())
+
+	// Callback function
+	SendAdder([]int{01, 17, 1991}, func(n int) {
+		fmt.Printf("%v \n", n)
+		// return n
+	})
+	// fmt.Printf("%v", sendMe)
 }

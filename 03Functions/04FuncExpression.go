@@ -15,12 +15,12 @@ import "fmt"
 // SayYo demonstrates about the function expression usage
 func SayYo() {
 
-	// func expression
+	// func expression, cannot be called out of the block
 	SayHello := func() {
 		fmt.Println("Hello")
 	}
 
-	// func expression
+	// func expression. cannot be called out of the block
 	SayMyName := func() string {
 		return "Heisenberg!?"
 	}
@@ -33,7 +33,8 @@ func SayYo() {
 
 // As it is not possible to access the variables SayHello SayMyName out side of the function scope
 // we would generally return the function which inturn returns the values to the variables.
-// Re-designing SayHello SayMyName
+// Re-designing SayMyName
+
 // SayMyName is the function which returns a function which inturn returns a type of string
 // The function can be accessable like any-other
 // decleration in main.go
