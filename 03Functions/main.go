@@ -36,4 +36,9 @@ func main() {
 		// return n
 	})
 	// fmt.Printf("%v", sendMe)
+
+	// Defer keyword
+	ExecuMe()
+	PrintMyAge()
+
 }

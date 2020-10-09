@@ -36,7 +36,7 @@ func SayYo() {
 // Re-designing SayMyName
 
 // SayMyName is the function which returns a function which inturn returns a type of string
-// The function can be accessable like any-other
+// This function is known as closure and can be accessable like any-other.
 // decleration in main.go
 // WhatsMyName := SayMyName()
 // fmt.Printf("%v", WhatsMyName())
