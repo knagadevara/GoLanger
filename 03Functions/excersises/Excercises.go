@@ -17,6 +17,12 @@ func TakeTwo(a int) (y int, x bool) {
 	return
 }
 
+// SimpleTakeTwo same functionality but minimal code
+func SimpleTakeTwo(a int) (int, bool) {
+
+	return a / 2, a%2 == 0
+}
+
 var numList = make([]int, 20, 40)
 
 //WhIsGreat is a sorting stat
