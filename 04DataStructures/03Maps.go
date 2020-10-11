@@ -42,7 +42,7 @@ func GetPage(httpURL string) {
 		buckets[n] = append(buckets[n], word)
 	}
 
-	for i, _ := range buckets {
+	for i := 0; i <= 12; i++ {
 		fmt.Println("Bucket Number: ", i, " - ", buckets[i])
 	}
 
