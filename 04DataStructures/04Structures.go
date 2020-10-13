@@ -16,8 +16,7 @@ func main() {
 
 	// var s2 student
 
-	s1 := student{fName: "Karthik", yob: 1991, lName: "Nagadevara"}
+	s1 := student{fName: "Karthik", lName: "Nagadevara", yob: 1991}
 	s2 := student{"Randy", "Paush", 1971}
 	fmt.Println(s1.fullName())
-	fmt.Println(s2.fullName())
 }
