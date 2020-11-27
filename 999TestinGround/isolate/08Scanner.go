@@ -11,10 +11,16 @@ const somePara = "In this example, we created a slice, and then created a for lo
 
 func main() {
 
+	// Can print the line directly through
+	// fmt.Println(somePara)
+	// Converting the string into a readable reader Type
 	reader := strings.NewReader(somePara)
+	// Scanning over the reader object, placing them into a buffer and returning a Scanner Type
 	scanner := bufio.NewScanner(reader)
+	// split the entire string into words with delimiter.
 	scanner.Split(bufio.ScanWords)
-	fmt.Println(scanner)
+	// scanner.Scan() returns a boolean value telling that there is a string to scan
+	fmt.Println(scanner.Scan())
 	for scanner.Scan() {
 		fmt.Println(scanner.Text())
 	}
@@ -22,4 +28,5 @@ func main() {
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "reading input:", err)
 	}
+
 }
