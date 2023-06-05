@@ -3,18 +3,16 @@ package main
 import "fmt"
 
 const MAX uint16 = 100
-const h20 uint16 = 20
-const h50 uint16 = 50
-const h75 uint16 = 75
+const HE_P20 uint16 = 20
+const HE_P50 uint16 = 50
+const HE_P75 uint16 = 75
 
 type Health struct {
-	current uint16
-	Max     uint16
+	Max, current uint16
 }
 
 type Energy struct {
-	current uint16
-	Max     uint16
+	Max, current uint16
 }
 
 type PlayerV struct {
@@ -38,12 +36,12 @@ func (h *Health) setHealth(hPortion uint16) {
 }
 
 func (e *Energy) setEnergy(ePortion uint16) {
-	totalNeededEnergy := (e.Max - e.current)
+	updatedEnergy := (e.current + ePortion)
 	if (e.current != 0) && (e.current < e.Max) {
-		if totalNeededEnergy <= ePortion {
-			e.current = e.current + (ePortion - (ePortion - totalNeededEnergy))
-		} else if totalNeededEnergy >= ePortion {
-			e.current = e.current + ePortion
+		if updatedEnergy < e.Max {
+			e.current = updatedEnergy
+		} else if updatedEnergy >= e.Max {
+			e.current = e.Max
 		} else {
 			fmt.Printf("Update Not Required")
 		}
@@ -74,5 +72,6 @@ func main() {
 	var Adhi PlayerV
 	Adhi.id, Adhi.name, Adhi.health, Adhi.energy = 1111, "Adhi", &AdhiHealth, &AdhiEnergy
 	Adhi.health.setHealth(120)
+	Adhi.energy.setEnergy(HE_P75)
 	Adhi.printStats()
 }
