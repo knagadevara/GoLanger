@@ -2,10 +2,9 @@ package main
 
 import "fmt"
 
-const MAX uint16 = 100
-const HE_P20 uint16 = 20
-const HE_P50 uint16 = 50
-const HE_P75 uint16 = 75
+type setStat interface {
+	UpdateStat()
+}
 
 type Health struct {
 	Max, current uint16
@@ -22,7 +21,13 @@ type PlayerV struct {
 	energy *Energy
 }
 
-func (h *Health) setHealth(hPortion uint16) {
+const MAX uint16 = 100
+const HE_P20 uint16 = 20
+const HE_P50 uint16 = 50
+const HE_P75 uint16 = 75
+
+func (h *Health) UpdateStat(hPortion uint16) {
+	println("Updating Health")
 	totalNeededHealth := (h.Max - h.current)
 	if (h.current != 0) && (h.current < h.Max) {
 		if totalNeededHealth <= hPortion {
@@ -35,7 +40,8 @@ func (h *Health) setHealth(hPortion uint16) {
 	}
 }
 
-func (e *Energy) setEnergy(ePortion uint16) {
+func (e *Energy) UpdateStat(ePortion uint16) {
+	println("Updating Energy")
 	updatedEnergy := (e.current + ePortion)
 	if (e.current != 0) && (e.current < e.Max) {
 		if updatedEnergy < e.Max {
@@ -48,17 +54,21 @@ func (e *Energy) setEnergy(ePortion uint16) {
 	}
 }
 
-func (p *PlayerV) changePlayerDetails(pId uint16, pName string) {
+func (p *PlayerV) UpdateStat(pId uint16, pName string) {
 	p.id = pId
 	p.name = pName
-	fmt.Printf("\tGame ON!\nName:\t%v", p.name)
+	fmt.Printf("Updated Player Name!\n")
 }
 
-func (p *PlayerV) printStats() {
+func (p *PlayerV) printStat() {
 	fmt.Printf("Name:\t%v\nHealth:\t%v\nEnergy:\t%v\n",
 		p.name,
 		p.health.current,
 		p.energy.current)
+}
+
+func UpdateStat(sStat setStat) {
+	sStat.UpdateStat()
 }
 
 func main() {
@@ -71,7 +81,10 @@ func main() {
 	AdhiEnergy.Max = MAX
 	var Adhi PlayerV
 	Adhi.id, Adhi.name, Adhi.health, Adhi.energy = 1111, "Adhi", &AdhiHealth, &AdhiEnergy
-	Adhi.health.setHealth(120)
-	Adhi.energy.setEnergy(HE_P75)
-	Adhi.printStats()
+	AdhiEnergy.UpdateStat(120)
+	AdhiHealth.UpdateStat(HE_P75)
+	Adhi.printStat()
+	Adhi.UpdateStat(007, "Gaurav")
+	Adhi.printStat()
+
 }
