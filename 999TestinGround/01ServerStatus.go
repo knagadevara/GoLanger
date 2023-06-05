@@ -3,10 +3,10 @@ package main
 import "fmt"
 
 const (
-	Offline     uint8 = 0
-	Online      uint8 = 1
-	Maintenance uint8 = 2
-	Retired     uint8 = 3
+	Offline uint8 = iota
+	Online
+	Maintenance
+	Retired
 )
 
 type serverDetails struct {
