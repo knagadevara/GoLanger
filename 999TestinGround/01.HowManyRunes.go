@@ -18,9 +18,7 @@ func toUpper(s *string) int {
 
 func main() {
 	countString = os.Args
-
-	presentRunes := toUpper(&countString[1])
-	fmt.Printf("%v%v\n", countString[1], strings.Repeat("!", presentRunes))
+	fmt.Printf("%v%v\n", countString[1], strings.Repeat("!", toUpper(&countString[1])))
 	catInChinese = "猫"
 	fmt.Printf("%v\nLenth of string is:%v\nCharacters in String: %v\n",
 		catInChinese,
