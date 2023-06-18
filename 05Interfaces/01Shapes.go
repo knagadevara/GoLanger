@@ -77,4 +77,8 @@ func main() {
 	PerimeterInfo(&rtc)
 	PerimeterInfo(&sqr)
 	PerimeterInfo(&crl)
+	AreaInfo(&rtc)
+	AreaInfo(&sqr)
+	AreaInfo(&crl)
+
 }

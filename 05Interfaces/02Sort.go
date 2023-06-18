@@ -30,22 +30,22 @@ func convertToLower(str []string) {
 
 func (w *WORD) sortOn() {
 	sort.StringSlice(*w).Sort()
-	fmt.Println(*w)
+	fmt.Printf("Sorting Words...\n%v\n", *w)
 }
 
 func (w *WORD) reverseOn() {
 	sort.Sort(sort.Reverse(sort.StringSlice(*w)))
-	fmt.Println(*w)
+	fmt.Printf("Reverse Sorting Words...\n%v\n", *w)
 }
 
 func (n *NUMBER) sortOn() {
 	sort.IntSlice(*n).Sort()
-	fmt.Println(*n)
+	fmt.Printf("Sorting Numbers...\n%v\n", *n)
 }
 
 func (n *NUMBER) reverseOn() {
 	sort.Sort(sort.Reverse(sort.IntSlice(*n)))
-	fmt.Println(*n)
+	fmt.Printf("Reverse Sorting Numbers...\n%v\n", *n)
 }
 
 func smartSort(s Sorter) {
@@ -60,9 +60,10 @@ func main() {
 
 	unsortedString := "This name is only the final element of the path the base name not the entire path"
 	var listOfWords WORD = WORD(strings.Split(unsortedString, " "))
-	convertToLower(listOfWords)
-	listOfWords.sortOn()
-	listOfWords.reverseOn()
 	unSortedIntegers := NUMBER([]int{31, 0, 54, 12, 78, 99})
-	unSortedIntegers.sortOn()
+	convertToLower(listOfWords)
+	smartSort(&listOfWords)
+	smartReverse(&listOfWords)
+	smartSort(&unSortedIntegers)
+	smartReverse(&unSortedIntegers)
 }
