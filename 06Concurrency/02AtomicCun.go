@@ -10,8 +10,8 @@ import (
 )
 
 var waitGroup sync.WaitGroup
-var counter int32
 var mutex sync.Mutex
+var counter int32
 
 func init() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
