@@ -21,8 +21,5 @@ func PrintItOut(ListofNums chan int64) {
 
 func main() {
 	chn := PutDataOnChannel(1, 2, 3, 4, 5, 6, 7, 8, 9)
-	// for num := range chn {
-	// 	fmt.Printf("%d", num)
-	// }
 	PrintItOut(chn)
 }
