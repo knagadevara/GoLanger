@@ -6,12 +6,12 @@ import (
 	"strconv"
 )
 
-func parseArgSloce(s []string) []uint64 {
-	var listOfNum = make([]uint64, 0)
+func parseArgSloce(s []string) []*uint64 {
+	var listOfNum = make([]*uint64, 0)
 	var someuint uint64
 	for _, num := range s[1:] {
 		someuint, _ = strconv.ParseUint(num, 10, 64)
-		listOfNum = append(listOfNum, someuint)
+		listOfNum = append(listOfNum, &someuint)
 	}
 	return listOfNum
 }
@@ -20,11 +20,11 @@ func calculateSquare(num *uint64) *uint64 {
 	somemul := (*num) * (*num)
 	return &somemul
 }
-func calculateSquareCh(nums ...uint64) (sqChan *chan uint64) {
+func calculateSquareCh(nums ...*uint64) (sqChan *chan uint64) {
 	var outChan = make(chan uint64)
 	go func() {
 		for _, num := range nums {
-			outChan <- *calculateSquare(&num)
+			outChan <- *calculateSquare(num)
 		}
 		close(outChan)
 	}()
@@ -38,11 +38,11 @@ func calculateFactorial(num *uint64) *uint64 {
 	}
 	return &total
 }
-func calculateFactorialCh(nums ...uint64) (calFact *chan uint64) {
+func calculateFactorialCh(nums ...*uint64) (calFact *chan uint64) {
 	var out = make(chan uint64)
 	go func() {
 		for _, v := range nums {
-			out <- *calculateFactorial(&v)
+			out <- *calculateFactorial(v)
 		}
 		close(out)
 	}()
