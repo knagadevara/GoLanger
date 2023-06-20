@@ -49,17 +49,19 @@ func calculateFactorialCh(nums ...uint64) (calFact *chan uint64) {
 	return &out
 }
 
-func printItOut(un uint64) { fmt.Printf(":\t%d\n", un) }
-func printItOutCh(ListofNums *chan uint64) {
+func printItOut(un *uint64, s *string) { fmt.Printf("%s:\t%d\n", *s, *un) }
+func printItOutCh(ListofNums *chan uint64, s *string) {
 	go func() {
 		for chn1 := range *ListofNums {
-			printItOut(chn1)
+			printItOut(&chn1, s)
 		}
 	}()
 }
 
 func main() {
-	printItOutCh(calculateFactorialCh(parseArgSloce(os.Args)...))
-	printItOutCh(calculateSquareCh(parseArgSloce(os.Args)...))
+	s := "Square"
+	f := "Factorial"
+	printItOutCh(calculateFactorialCh(parseArgSloce(os.Args)...), &f)
+	printItOutCh(calculateSquareCh(parseArgSloce(os.Args)...), &s)
 
 }
