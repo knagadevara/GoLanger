@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"runtime"
+)
 
 func PutDataOnChannel(nums ...int64) chan int64 {
 	var myChn = make(chan int64)
@@ -22,4 +25,5 @@ func PrintItOut(ListofNums chan int64) {
 func main() {
 	chn := PutDataOnChannel(1, 2, 3, 4, 5, 6, 7, 8, 9)
 	PrintItOut(chn)
+	fmt.Printf("%v\n", runtime.NumCPU())
 }

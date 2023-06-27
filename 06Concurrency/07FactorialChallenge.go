@@ -52,6 +52,28 @@ func calculateFactorialCh(nums chan uint64) (calFact *chan uint64) {
 	return &out
 }
 
+func calFactorialCh2(nums chan uint64) (calFact *chan uint64) {
+	var out = make(chan uint64)
+	for uintVar := range nums {
+		go func(v uint64) {
+			var total uint64 = 1
+			for index := v; index > 0; index-- {
+				total *= index
+			}
+			out <- total
+		}(uintVar)
+	}
+	return &out
+}
+
+func calculateSquareCh2(nums chan uint64) {
+	go func() {
+		for num := range nums {
+			nums <- *calculateSquare(&num)
+		}
+	}()
+}
+
 func printItOut(un *uint64, s *string) { fmt.Printf("%s:\t%d\n", *s, *un) }
 func printItOutCh(ListofNums *chan uint64, s *string) {
 	go func() {
@@ -63,7 +85,9 @@ func printItOutCh(ListofNums *chan uint64, s *string) {
 
 func main() {
 	s := "Square"
-	f := "Factorial"
-	printItOutCh(calculateFactorialCh(parseArgSloce(os.Args)), &f)
+	// f := "Factorial"
+	// coreChannel1 := parseArgSloce(os.Args)
+	// printItOutCh(calculateFactorialCh(coreChannel1), &f)
 	printItOutCh(calculateSquareCh(parseArgSloce(os.Args)), &s)
+	// printItOutCh(calFactorialCh2(parseArgSloce(os.Args)), &f)
 }
