@@ -1,1 +1,2 @@
-2023/06/26 23:50:35 Cannot Open file: open NonExistingFile.txt: no such file or directory
+2023/06/27 23:48:47 	DirError!:Overshoot or Stuck! UP:130 - DN:120
+
