@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <!-- <meta http-equiv="refresh" content="10"> -->
+    <title> Submit Form </title>
+</head>
+
+<body>
+    {{ if .}}
+    <ul>
+        <li> You've been painted by {{ .FName }} , {{ .LName }} </li>
+    </ul>
+    {{ end }}
+    <form action="/" method="post">
+        <input type="text" name="FName" id="FName" placeholder="FName" autofocus autocomplete="off">
+        <input type="text" name="LName" id="LName" placeholder="LName" autofocus autocomplete="off">
+        <input type="text" name="Age" id="Age" placeholder="Age" autofocus autocomplete="off">
+        <input type="submit" name="submit-button" value="send">
+    </form>
+</body>
+
+</html>
