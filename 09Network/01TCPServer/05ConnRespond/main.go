@@ -29,6 +29,7 @@ var responseStatus = make(map[int]string, 20)
 func responder(conn net.Conn, method, resource string, Status int, message string) {
 	var httpResponseHeadder string = "HTTP/1.1 %d %s\r\n" +
 		"Content-Length: %d\r\n" +
+		"charset: UTF-8\r\n" +
 		"Content-Type: text/html\r\n\r\n"
 
 	var BasicHTML string = `
@@ -83,14 +84,6 @@ func conScanRequest(conn net.Conn) []string {
 	return requestDetails
 }
 
-func startTcpServer(addr string) net.Listener {
-	tcpListner, err := net.Listen("tcp4", addr)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	return tcpListner
-}
-
 func connectionHandler(conn net.Conn) {
 	defer conn.Close()
 	var requestedDetails []string = conScanRequest(conn)
@@ -104,6 +97,14 @@ func acceptConnections(tcpListner net.Listener) {
 	}
 
 	go connectionHandler(tcpConnection)
+}
+
+func startTcpServer(addr string) net.Listener {
+	tcpListner, err := net.Listen("tcp4", addr)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return tcpListner
 }
 
 func main() {

@@ -9,15 +9,26 @@
     <title> Submit Form </title>
 </head>
 
-<body>
-    {{ if .}}
-    <ul>
-        <li> You've been painted by {{ .FName }} , {{ .LName }} </li>
-    </ul>
+<body> 
+    {{ $PostForm := .PostForm}}
+    {{ if $PostForm}}
+    <main>
+        <p><strong>Variable Name</strong> and <em>Value</em> </p>
+        {{ range $key , $value := $PostForm }}
+        <p><strong> {{$key}} </strong></p>
+        <ul> 
+            {{range $value}} <li> {{ . }} </li>
+        {{end}}
+        </ul>
+        {{ end }}
+</main>
     {{ end }}
+
+    
+
     <form action="/" method="post">
-        <input type="text" name="FName" id="FName" placeholder="FName" autofocus autocomplete="off">
-        <input type="text" name="LName" id="LName" placeholder="LName" autofocus autocomplete="off">
+        <input type="text" name="FirstName" id="FName" placeholder="First Name" autofocus autocomplete="off">
+        <input type="text" name="LastName" id="LName" placeholder="Last Name" autofocus autocomplete="off">
         <input type="text" name="Age" id="Age" placeholder="Age" autofocus autocomplete="off">
         <input type="submit" name="submit-button" value="send">
     </form>
