@@ -9,22 +9,22 @@
     <title> Submit Form </title>
 </head>
 
-<body> 
+<body>
     {{ $PostForm := .PostForm}}
     {{ if $PostForm}}
     <main>
         <p><strong>Variable Name</strong> and <em>Value</em> </p>
         {{ range $key , $value := $PostForm }}
         <p><strong> {{$key}} </strong></p>
-        <ul> 
+        <ul>
             {{range $value}} <li> {{ . }} </li>
-        {{end}}
+            {{end}}
         </ul>
         {{ end }}
-</main>
+    </main>
     {{ end }}
 
-    
+
 
     <form action="/" method="post">
         <input type="text" name="FirstName" id="FName" placeholder="First Name" autofocus autocomplete="off">
