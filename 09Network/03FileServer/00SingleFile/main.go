@@ -57,6 +57,9 @@ func ServeJL(w http.ResponseWriter, r *http.Request) {
 	}
 	http.ServeContent(w, r, fst.Name(), fst.ModTime(), file)
 	log.Default().Println("JL: Done")
+
+	// File can be served without usong os.Open
+	// http.ServeFile(w, r, "jl.jpg")
 }
 
 func main() {
