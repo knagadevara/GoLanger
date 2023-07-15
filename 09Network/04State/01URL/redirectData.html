@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
 
+{{$ProductUser:=.}}
+
 <head>
     <meta charset="utf-8">
     <title> Sourced Details </title>
-    <h1> Form Details </h1>
+    <h5> Last Name : {{$ProductUser.LastName}} </h5>
+    <h5> First Name : {{$ProductUser.FirstName}} </h5>
 </head>
-{{$ProductUser:=.}}
-
-<body>
-    <p> Product is being used by {{$ProductUser.LastName}} , {{$ProductUser.FirstName}} </p>
-</body>
 
 </html>
