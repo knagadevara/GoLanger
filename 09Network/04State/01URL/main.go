@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"net/url"
@@ -17,19 +16,23 @@ type productUser struct {
 var parsedTemplate *template.Template
 
 func init() {
-	parsedTemplate = template.Must(template.ParseFiles("parseValues.html"))
+	parsedTemplate = template.Must(template.ParseGlob("*.html"))
 }
 
-func setRetrive(w http.ResponseWriter, r *http.Request, method string) {
-	var formData url.Values
-	w.Header().Set("Content-Type", "text/html ; charset=utf-8")
-	err := parsedTemplate.ExecuteTemplate(w, "parseValues.html", method)
+func executeForm(w http.ResponseWriter, templateName string, method any) {
+	err := parsedTemplate.ExecuteTemplate(w, templateName, method)
 	if err != nil {
 		log.Default().Fatalln(err)
 	} else {
 		log.Default().Println("Executed Template")
 	}
-	err = r.ParseForm()
+}
+
+func setRetrive(w http.ResponseWriter, r *http.Request, method string) {
+	var formData url.Values
+	w.Header().Set("Content-Type", "text/html ; charset=utf-8")
+	executeForm(w, "parseValues.html", method)
+	err := r.ParseForm()
 	if err != nil {
 		log.Default().Fatalln(err)
 	} else {
@@ -45,9 +48,12 @@ func setRetrive(w http.ResponseWriter, r *http.Request, method string) {
 		formData.Add("LastName", r.FormValue("LastName"))
 		formData.Add("Age", r.FormValue("Age"))
 	}
-	fmt.Fprintf(w, "Get Data from form:\nName: %s, %s\t Age: %s ", formData.Get("FirstName"),
+	var endUser productUser = productUser{
+		formData.Get("FirstName"),
 		formData.Get("LastName"),
-		formData.Get("Age"))
+		formData.Get("Age"),
+	}
+	executeForm(w, "redirectData.html", endUser)
 }
 
 func viaPost(w http.ResponseWriter, r *http.Request) {
