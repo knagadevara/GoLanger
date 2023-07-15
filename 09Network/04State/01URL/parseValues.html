@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title> ?? </title>
+    {{if .}}
+    <h1> {{.}} </h1>
+    {{ end }}
+</head>
+
+<body>
+    <form method={{.}}>
+        <input type="text" name="FirstName" id="FName" placeholder="First Name" autofocus autocomplete="off">
+        <input type="text" name="LastName" id="LName" placeholder="Last Name" autofocus autocomplete="off">
+        <input type="text" name="Age" id="Age" placeholder="Age" autofocus autocomplete="off">
+        <input type="submit" name="submit-button" value="send">
+    </form>
+</body>
+
+</html>

@@ -8,6 +8,8 @@ import (
 	"os"
 )
 
+var fileRoot string = "../CommonObjects/"
+
 // using io.copy
 // serving directly from web
 func WebServe(w http.ResponseWriter, r *http.Request) {
