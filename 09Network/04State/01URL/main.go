@@ -29,12 +29,8 @@ func executeForm(w http.ResponseWriter, templateName string, data any) {
 	}
 }
 
-func setRetrive(w http.ResponseWriter, r *http.Request) {
+func parseForm(r *http.Request) productUser {
 	var formData url.Values
-	method := strings.Split(string(r.URL.Path), "/")[1]
-	log.Default().Println(method)
-	w.Header().Set("Content-Type", "text/html ; charset=utf-8")
-	executeForm(w, "parseValues.html", method)
 	err := r.ParseForm()
 	if err != nil {
 		log.Default().Fatalln(err)
@@ -56,6 +52,15 @@ func setRetrive(w http.ResponseWriter, r *http.Request) {
 		formData.Get("LastName"),
 		formData.Get("Age"),
 	}
+	return endUser
+}
+
+func setRetrive(w http.ResponseWriter, r *http.Request) {
+	method := strings.Split(string(r.URL.Path), "/")[1]
+	log.Default().Println(method)
+	w.Header().Set("Content-Type", "text/html ; charset=utf-8")
+	executeForm(w, "parseValues.html", method)
+	endUser := parseForm(r)
 	executeForm(w, "redirectData.html", endUser)
 }
 
