@@ -8,6 +8,11 @@
 
         go build <path to main.go>
 
+- Debug Conf(valid only for vscode), to be added in .bash_env/.bashrc
+
+        alias godebug="vdlv debug --headless --listen=:2345 --log --api-version=2 -- $@"
+
+
 ##### Variable Decleration 
 
 - All the variables can be declared at the package level inside var block

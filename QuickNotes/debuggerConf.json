@@ -1,0 +1,23 @@
+{
+    "window.zoomLevel": 1,
+    "git.autofetch": true,
+    "workbench.editor.enablePreview": false,
+    "files.associations": {
+        "*.go": "go"
+    },
+    "explorer.confirmDelete": false,
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [{
+            "name" : "Remote",
+            "type": "go",
+            "request": "attach",
+            "mode": "remote",
+            "remotePath": "${fileDirname}",
+            "port": 2345,
+            "host": "127.0.0.1",
+            "apiVersion": 2
+        }],
+        "compounds": []
+    }
+}
