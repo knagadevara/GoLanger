@@ -43,4 +43,12 @@
 
 - There can be multiple blocks of 'const' and 'var'
 
-###### Arrays
+
+#### Comparission
+
+- The result of a any comparission operator is a boolean.
+
+        num1 := 20
+        num2 := 10
+        answer := num1 > num2
+        fmt.Println(answer) // true
