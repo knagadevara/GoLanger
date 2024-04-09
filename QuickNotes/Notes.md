@@ -52,3 +52,39 @@
         num2 := 10
         answer := num1 > num2
         fmt.Println(answer) // true
+
+
+#### Switch Case:
+
+        All the case expression will be checked for a match with switch's pattern.
+        If they match then statements under the case will be excecuted and no other expressions will be checked, else default statements will be executed.
+        fallthrough will directly execute the statements in the next case block.
+
+
+        var checker := "<pattern>"
+
+        switch checker{
+                case "zxcs":
+                        statement 1
+                        statement 2
+                        ..
+                        statement n
+                case "Xyc":
+                        statement 1
+                        statement 2
+                        ..
+                        statement n
+                case "zxcs":
+                        fallthrough
+                case "prox":
+                        fallthrough
+                case "inx":
+                        statement 1
+                        statement 2
+                        ..
+                        statement n
+                default:
+                        statement 1
+                        ..
+                        statement n                
+        }
